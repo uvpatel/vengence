@@ -11,6 +11,8 @@ import { CliInstallBox } from "@/components/docs/cli-install-box";
 import { PropsTable } from "@/components/docs/props-table";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 
+export const instant = false;
+
 export async function generateStaticParams() {
   const components = getAllComponents();
   return components.map((c) => ({ slug: c.slug }));

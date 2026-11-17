@@ -6,6 +6,8 @@ import { ComponentPreviewBox } from "@/components/docs/component-preview-box";
 import { CliInstallBox } from "@/components/docs/cli-install-box";
 import { IconArrowLeft } from "@tabler/icons-react";
 
+export const instant = false;
+
 export async function generateStaticParams() {
   const blocks = getAllBlocks();
   return blocks.map((b) => ({ slug: b.slug }));
