@@ -1,37 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vengence UI
 
-## Getting Started
+<div align="center">
+  <p><strong>Modern, open-source React component library combining shadcn component distribution with expressive Aceternity-inspired animations.</strong></p>
+  <p>
+    <a href="https://vengence-rho.vercel.app">Official Website</a> •
+    <a href="https://vengence-rho.vercel.app/components">Components</a> •
+    <a href="https://vengence-rho.vercel.app/blocks">Blocks</a> •
+    <a href="https://vengence-rho.vercel.app/docs">Documentation</a>
+  </p>
+</div>
 
-First, run the development server:
+---
 
+## ⚡ Overview
+
+Vengence UI is built for developers who want the modular code-ownership model of **shadcn/ui** and the visual creativity of **Aceternity UI**. 
+
+Every component is self-contained and distributed via a shadcn-compatible registry. You copy the source code directly into your repository with one CLI command: zero npm bloat, zero runtime vendor lock-in.
+
+### Tech Stack
+- **Framework**: Next.js 16+ (App Router, Server Components by default)
+- **Runtime**: React 19+
+- **Styling**: Tailwind CSS v4 & OKLCH color variables
+- **Motion**: `motion/react` (Motion 14+)
+- **Icons**: `@tabler/icons-react`
+- **Package Manager**: Bun
+- **Distribution**: shadcn CLI Registry
+
+---
+
+## 🚀 Quick Start
+
+### 1. Register Vengence UI namespace
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bunx shadcn@latest registry add "@vengence=https://vengence-rho.vercel.app/r/{name}.json"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install any component
+```bash
+bunx shadcn@latest add @vengence/spotlight-card
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Direct URL installation
+You can also install components directly without configuring namespaces:
+```bash
+bunx shadcn@latest add https://vengence-rho.vercel.app/r/spotlight-card.json
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📦 Component Collection
 
-To learn more about Next.js, take a look at the following resources:
+### Standard UI
+- **Button** (`button`): Button with multiple variants, sizes, and states.
+- **Animated Button** (`animated-button`): Interactive button with shimmer scan and spring interactions.
+- **Gradient Button** (`gradient-button`): Glowing bordered & solid gradient triggers.
+- **Spotlight Card** (`spotlight-card`): Cursor-tracking radial illumination card.
+- **Bento Card** (`bento-card`): High-density grid card for SaaS features.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Animated UI
+- **Magnetic Button** (`magnetic-button`): Cursor magnetic attraction with spring return physics.
+- **Border Beam** (`border-beam`): Continuous travelling perimeter gradient beam.
+- **3D Card** (`card-3d`): Perspective depth and tilt card tracking pointer.
+- **Expandable Card** (`expandable-card`): Smooth shared layout modal expansion.
+- **Floating Dock** (`floating-dock`): macOS-inspired dock with magnifying icons.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Backgrounds
+- **Aurora Background** (`aurora-background`): Ethereal animated northern lights waves.
+- **Grid Background** (`grid-background`): Geometric line grid with radial vignette.
+- **Dot Background** (`dot-background`): Polished dot halftone pattern.
+- **Spotlight Background** (`spotlight-background`): Overhead conic stage lighting.
+- **Gradient Mesh** (`gradient-mesh`): Fluid floating blurred color nodes.
 
-## Deploy on Vercel
+### Text Effects
+- **Text Reveal** (`text-reveal`): Word-by-word cascading spring entrance.
+- **Typewriter Text** (`typewriter-text`): Terminal character typing with cursor pulse.
+- **Gradient Text** (`gradient-text`): Shimmering multi-stop gradient typography.
+- **Flip Words** (`flip-words`): 3D letter stagger flipping transitions.
+- **Blur Reveal** (`blur-reveal`): Optical defocus blur to sharp focus.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Website Blocks
+- **Hero Section** (`hero-section`)
+- **Bento Grid Section** (`bento-grid-section`)
+- **Feature Section** (`feature-section`)
+- **Pricing Section** (`pricing-section`)
+- **Testimonial Section** (`testimonial-section`)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# vengence
+---
+
+## 🛠 Local Development
+
+```bash
+# Clone the repository
+git clone https://github.com/urvilpatel/vengence-ui.git
+cd vengence-ui
+
+# Install dependencies
+bun install
+
+# Build the registry manifests into /public/r/
+bun run registry:build
+
+# Run development server
+bun run dev
+```
+
+---
+
+## 📄 License
+
+MIT License © 2026 Vengence UI.
