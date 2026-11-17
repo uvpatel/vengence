@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-button",
+  "title": "Animated Button",
+  "description": "An interactive button with shimmer animation and micro-spring hover interactions.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/ui/animated-button.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion, useReducedMotion, type HTMLMotionProps } from \"motion/react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface AnimatedButtonProps\n  extends Omit<HTMLMotionProps<\"button\">, \"ref\" | \"children\"> {\n  children?: React.ReactNode;\n  shimmerColor?: string;\n  glow?: boolean;\n}\n\nexport function AnimatedButton({\n  children,\n  className,\n  shimmerColor = \"rgba(255, 255, 255, 0.2)\",\n  glow = true,\n  disabled,\n  ...props\n}: AnimatedButtonProps) {\n  const prefersReducedMotion = useReducedMotion();\n\n  return (\n    <motion.button\n      whileHover={prefersReducedMotion || disabled ? {} : { scale: 1.02 }}\n      whileTap={prefersReducedMotion || disabled ? {} : { scale: 0.98 }}\n      transition={{ type: \"spring\", stiffness: 400, damping: 25 }}\n      disabled={disabled}\n      className={cn(\n        \"group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-neutral-950 px-6 py-3 text-sm font-medium text-white shadow-2xl transition-all disabled:opacity-50 disabled:pointer-events-none dark:bg-white dark:text-neutral-950 border border-white/10 dark:border-neutral-200\",\n        glow && \"hover:shadow-[0_0_25px_rgba(255,255,255,0.15)] dark:hover:shadow-[0_0_25px_rgba(0,0,0,0.15)]\",\n        className\n      )}\n      {...props}\n    >\n      {!prefersReducedMotion && (\n        <span\n          className=\"absolute inset-0 block h-full w-full -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-[var(--shimmer-color)] to-transparent group-hover:translate-x-full transition-transform duration-1000 ease-in-out\"\n          style={\n            {\n              \"--shimmer-color\": shimmerColor,\n            } as React.CSSProperties\n          }\n        />\n      )}\n      <span className=\"relative z-10 flex items-center gap-2\">{children}</span>\n    </motion.button>\n  );\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

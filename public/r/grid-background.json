@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "grid-background",
+  "title": "Grid Background",
+  "description": "A clean geometric grid background with optional radial mask falloff.",
+  "files": [
+    {
+      "path": "registry/default/backgrounds/grid-background.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport React from \"react\";\n\nexport interface GridBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {\n  children?: React.ReactNode;\n  gridSize?: number;\n  mask?: \"radial\" | \"none\";\n}\n\nexport function GridBackground({\n  children,\n  className,\n  gridSize = 32,\n  mask = \"radial\",\n  ...props\n}: GridBackgroundProps) {\n  return (\n    <div\n      className={cn(\n        \"relative flex h-full w-full items-center justify-center bg-white dark:bg-neutral-950 overflow-hidden\",\n        className\n      )}\n      {...props}\n    >\n      <div\n        className={cn(\n          \"pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]\",\n          mask === \"radial\" &&\n            \"[mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]\"\n        )}\n        style={{ backgroundSize: `${gridSize}px ${gridSize}px` }}\n      />\n      <div className=\"relative z-10 w-full\">{children}</div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

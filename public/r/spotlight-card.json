@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spotlight-card",
+  "title": "Spotlight Card",
+  "description": "A card with an interactive mouse spotlight effect that tracks cursor position.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/ui/spotlight-card.tsx",
+      "content": "\"use client\";\n\nimport { useMotionTemplate, useMotionValue, useReducedMotion, motion } from \"motion/react\";\nimport type { HTMLAttributes, PointerEvent } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface SpotlightCardProps extends HTMLAttributes<HTMLDivElement> {\n  spotlightColor?: string;\n  spotlightSize?: number;\n}\n\nexport function SpotlightCard({\n  children,\n  className,\n  spotlightColor = \"rgba(120, 119, 198, 0.15)\",\n  spotlightSize = 350,\n  onPointerMove,\n  ...props\n}: SpotlightCardProps) {\n  const mouseX = useMotionValue(-1000);\n  const mouseY = useMotionValue(-1000);\n  const prefersReducedMotion = useReducedMotion();\n\n  const background = useMotionTemplate`\n    radial-gradient(\n      ${spotlightSize}px circle at ${mouseX}px ${mouseY}px,\n      ${spotlightColor},\n      transparent 80%\n    )\n  `;\n\n  function handlePointerMove(event: PointerEvent<HTMLDivElement>) {\n    const rect = event.currentTarget.getBoundingClientRect();\n    mouseX.set(event.clientX - rect.left);\n    mouseY.set(event.clientY - rect.top);\n    onPointerMove?.(event);\n  }\n\n  function handlePointerLeave() {\n    mouseX.set(-1000);\n    mouseY.set(-1000);\n  }\n\n  return (\n    <div\n      className={cn(\n        \"group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-950 transition-colors\",\n        className\n      )}\n      onPointerMove={prefersReducedMotion ? onPointerMove : handlePointerMove}\n      onPointerLeave={handlePointerLeave}\n      {...props}\n    >\n      {!prefersReducedMotion && (\n        <motion.div\n          className=\"pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100\"\n          style={{ background }}\n        />\n      )}\n\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

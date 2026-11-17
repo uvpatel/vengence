@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aurora-background",
+  "title": "Aurora Background",
+  "description": "An ethereal flowing aurora borealis animated background effect.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/backgrounds/aurora-background.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport React, { ReactNode } from \"react\";\nimport { useReducedMotion } from \"motion/react\";\n\ninterface AuroraBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {\n  children: ReactNode;\n  showRadialGradient?: boolean;\n}\n\nexport function AuroraBackground({\n  className,\n  children,\n  showRadialGradient = true,\n  ...props\n}: AuroraBackgroundProps) {\n  const prefersReducedMotion = useReducedMotion();\n\n  return (\n    <div\n      className={cn(\n        \"relative flex flex-col h-[100%] items-center justify-center bg-neutral-950 text-slate-100 transition-bg\",\n        className\n      )}\n      {...props}\n    >\n      <div className=\"absolute inset-0 overflow-hidden pointer-events-none\">\n        <div\n          className={cn(\n            `\n            [--white-gradient:repeating-linear-gradient(100deg,var(--white)_0%,var(--white)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--white)_16%)]\n            [--dark-gradient:repeating-linear-gradient(100deg,var(--black)_0%,var(--black)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--black)_16%)]\n            [--aurora:repeating-linear-gradient(100deg,#3b82f6_10%,#a855f7_15%,#6366f1_20%,#e0e7ff_25%,#3b82f6_30%)]\n            [background-image:var(--dark-gradient),var(--aurora)]\n            [background-size:300%,_200%]\n            [background-position:50%_50%,50%_50%]\n            filter blur-[10px] invert dark:invert-0\n            after:content-[\"\"] after:absolute after:inset-0 after:[background-image:var(--dark-gradient),var(--aurora)] \n            after:[background-size:200%,_100%] \n            after:animate-[aurora_60s_linear_infinite]\n            after:[background-attachment:fixed] after:mix-blend-difference\n            pointer-events-none\n            absolute -inset-[10px] opacity-40 will-change-transform`,\n            !prefersReducedMotion && \"animate-[aurora_60s_linear_infinite]\",\n            showRadialGradient &&\n              `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`\n          )}\n        />\n      </div>\n      <div className=\"relative z-10 w-full\">{children}</div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

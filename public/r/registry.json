@@ -1,0 +1,349 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "vengence",
+  "homepage": "https://vengence-rho.vercel.app",
+  "items": [
+    {
+      "name": "button",
+      "title": "Button",
+      "description": "Displays a button or a component that looks like a button with multiple variants and sizes.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "animated-button",
+      "title": "Animated Button",
+      "description": "An interactive button with shimmer animation and micro-spring hover interactions.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "gradient-button",
+      "title": "Gradient Button",
+      "description": "An eye-catching button featuring dynamic glowing gradient borders.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/gradient-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "spotlight-card",
+      "title": "Spotlight Card",
+      "description": "A card with an interactive mouse spotlight effect that tracks cursor position.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/spotlight-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "bento-card",
+      "title": "Bento Card",
+      "description": "A versatile bento card component designed for high-density modern grids.",
+      "files": [
+        {
+          "path": "registry/default/ui/bento-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "magnetic-button",
+      "title": "Magnetic Button",
+      "description": "A magnetic cursor attraction button powered by spring physics.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/animated/magnetic-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "border-beam",
+      "title": "Border Beam",
+      "description": "An animated gradient beam that seamlessly travels around the border of any card or container.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/animated/border-beam.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "card-3d",
+      "title": "3D Card",
+      "description": "A 3D perspective tilt card that responds smoothly to mouse hover movements.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/animated/card-3d.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "expandable-card",
+      "title": "Expandable Card",
+      "description": "An interactive card that smoothly expands into an informative modal using shared layout animations.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/animated/expandable-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "floating-dock",
+      "title": "Floating Dock",
+      "description": "A floating macOS-inspired navigation dock with fluid icon magnification on hover.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/animated/floating-dock.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "aurora-background",
+      "title": "Aurora Background",
+      "description": "An ethereal flowing aurora borealis animated background effect.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/backgrounds/aurora-background.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "grid-background",
+      "title": "Grid Background",
+      "description": "A clean geometric grid background with optional radial mask falloff.",
+      "files": [
+        {
+          "path": "registry/default/backgrounds/grid-background.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "dot-background",
+      "title": "Dot Background",
+      "description": "A refined dot matrix background pattern with subtle radial vignette.",
+      "files": [
+        {
+          "path": "registry/default/backgrounds/dot-background.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "spotlight-background",
+      "title": "Spotlight Background",
+      "description": "A theatrical overhead spotlight gradient background for hero stages.",
+      "files": [
+        {
+          "path": "registry/default/backgrounds/spotlight-background.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "gradient-mesh",
+      "title": "Gradient Mesh",
+      "description": "A fluid multi-point ambient gradient mesh with floating blurred color nodes.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/backgrounds/gradient-mesh.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "text-reveal",
+      "title": "Text Reveal",
+      "description": "Smooth cascading word-by-word text animation with spring easing.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/text/text-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "typewriter-text",
+      "title": "Typewriter Text",
+      "description": "Retro-modern terminal typewriter effect with pulsing cursor and multi-phrase cycling.",
+      "files": [
+        {
+          "path": "registry/default/text/typewriter-text.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "gradient-text",
+      "title": "Gradient Text",
+      "description": "Animated shimmering multi-color gradient text typography.",
+      "files": [
+        {
+          "path": "registry/default/text/gradient-text.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "flip-words",
+      "title": "Flip Words",
+      "description": "Dynamic words flipping sequence with 3D stagger and optical blur.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/text/flip-words.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "blur-reveal",
+      "title": "Blur Reveal",
+      "description": "Cinematic text entrance that resolves from defocus blur to sharp focus.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/text/blur-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "hero-section",
+      "title": "Hero Section",
+      "description": "High-converting marketing hero section with animated badging, strong typography, and action CTAs.",
+      "files": [
+        {
+          "path": "registry/default/blocks/hero-section.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "bento-grid-section",
+      "title": "Bento Grid Section",
+      "description": "Adaptive bento grid feature layout showcasing product capabilities in clean modular cards.",
+      "files": [
+        {
+          "path": "registry/default/blocks/bento-grid-section.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "feature-section",
+      "title": "Feature Section",
+      "description": "Three-column feature breakdown grid highlighting key architectural advantages.",
+      "files": [
+        {
+          "path": "registry/default/blocks/feature-section.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "pricing-section",
+      "title": "Pricing Section",
+      "description": "Clean, comparison pricing table emphasizing open source and community backing.",
+      "files": [
+        {
+          "path": "registry/default/blocks/pricing-section.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "testimonial-section",
+      "title": "Testimonial Section",
+      "description": "Customer and community testimonials arranged in responsive quote cards.",
+      "files": [
+        {
+          "path": "registry/default/blocks/testimonial-section.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    }
+  ]
+}

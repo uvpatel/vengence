@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flip-words",
+  "title": "Flip Words",
+  "description": "Dynamic words flipping sequence with 3D stagger and optical blur.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/text/flip-words.tsx",
+      "content": "\"use client\";\n\nimport React, { useCallback, useEffect, useState } from \"react\";\nimport { AnimatePresence, motion, useReducedMotion } from \"motion/react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface FlipWordsProps {\n  words: string[];\n  duration?: number;\n  className?: string;\n}\n\nexport function FlipWords({\n  words,\n  duration = 2500,\n  className,\n}: FlipWordsProps) {\n  const [currentWord, setCurrentWord] = useState(words[0]);\n  const [isAnimating, setIsAnimating] = useState<boolean>(false);\n  const prefersReducedMotion = useReducedMotion();\n\n  const startAnimation = useCallback(() => {\n    const word = words[words.indexOf(currentWord) + 1] || words[0];\n    setCurrentWord(word);\n    setIsAnimating(true);\n  }, [currentWord, words]);\n\n  useEffect(() => {\n    if (!isAnimating) {\n      const timer = setTimeout(() => {\n        startAnimation();\n      }, duration);\n      return () => clearTimeout(timer);\n    }\n  }, [isAnimating, duration, startAnimation]);\n\n  if (prefersReducedMotion) {\n    return <span className={cn(\"inline-block\", className)}>{currentWord}</span>;\n  }\n\n  return (\n    <AnimatePresence\n      onExitComplete={() => {\n        setIsAnimating(false);\n      }}\n    >\n      <motion.div\n        initial={{\n          opacity: 0,\n          y: 10,\n        }}\n        animate={{\n          opacity: 1,\n          y: 0,\n        }}\n        transition={{\n          type: \"spring\",\n          stiffness: 100,\n          damping: 10,\n        }}\n        exit={{\n          opacity: 0,\n          y: -40,\n          x: 20,\n          filter: \"blur(6px)\",\n          scale: 1.5,\n          position: \"absolute\",\n        }}\n        className={cn(\n          \"z-10 inline-block relative text-left text-neutral-900 dark:text-neutral-100 px-2\",\n          className\n        )}\n        key={currentWord}\n      >\n        {currentWord.split(\" \").map((word, wordIndex) => (\n          <motion.span\n            key={word + wordIndex}\n            initial={{ opacity: 0, y: 10, filter: \"blur(6px)\" }}\n            animate={{ opacity: 1, y: 0, filter: \"blur(0px)\" }}\n            transition={{\n              delay: wordIndex * 0.2,\n              duration: 0.3,\n            }}\n            className=\"inline-block whitespace-nowrap\"\n          >\n            {word.split(\"\").map((letter, letterIndex) => (\n              <motion.span\n                key={word + letterIndex}\n                initial={{ opacity: 0, y: 10, filter: \"blur(6px)\" }}\n                animate={{ opacity: 1, y: 0, filter: \"blur(0px)\" }}\n                transition={{\n                  delay: wordIndex * 0.2 + letterIndex * 0.04,\n                  duration: 0.2,\n                }}\n                className=\"inline-block\"\n              >\n                {letter}\n              </motion.span>\n            ))}\n            <span className=\"inline-block\">&nbsp;</span>\n          </motion.span>\n        ))}\n      </motion.div>\n    </AnimatePresence>\n  );\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

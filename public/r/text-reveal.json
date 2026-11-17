@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-reveal",
+  "title": "Text Reveal",
+  "description": "Smooth cascading word-by-word text animation with spring easing.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/text/text-reveal.tsx",
+      "content": "\"use client\";\n\nimport { motion, useReducedMotion } from \"motion/react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface TextRevealProps {\n  text: string;\n  className?: string;\n  delay?: number;\n  duration?: number;\n}\n\nexport function TextReveal({\n  text,\n  className,\n  delay = 0,\n  duration = 0.5,\n}: TextRevealProps) {\n  const words = text.split(\" \");\n  const prefersReducedMotion = useReducedMotion();\n\n  if (prefersReducedMotion) {\n    return <span className={cn(\"inline-block\", className)}>{text}</span>;\n  }\n\n  return (\n    <span className={cn(\"inline-block flex-wrap\", className)}>\n      {words.map((word, i) => (\n        <span key={i} className=\"inline-block overflow-hidden whitespace-nowrap mr-[0.25em]\">\n          <motion.span\n            initial={{ y: \"100%\", opacity: 0, filter: \"blur(4px)\" }}\n            animate={{ y: 0, opacity: 1, filter: \"blur(0px)\" }}\n            transition={{\n              duration,\n              delay: delay + i * 0.08,\n              ease: [0.2, 0.65, 0.3, 0.9],\n            }}\n            className=\"inline-block\"\n          >\n            {word}\n          </motion.span>\n        </span>\n      ))}\n    </span>\n  );\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "vengence",
+  "homepage": "https://vengence-rho.vercel.app",
+  "items": [
+    {
+      "name": "hero-section",
+      "type": "registry:block",
+      "title": "Hero Section",
+      "description": "High-converting marketing hero section with animated badging, strong typography, and action CTAs.",
+      "files": [
+        {
+          "path": "hero-section.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "bento-grid-section",
+      "type": "registry:block",
+      "title": "Bento Grid Section",
+      "description": "Adaptive bento grid feature layout showcasing product capabilities in clean modular cards.",
+      "files": [
+        {
+          "path": "bento-grid-section.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "feature-section",
+      "type": "registry:block",
+      "title": "Feature Section",
+      "description": "Three-column feature breakdown grid highlighting key architectural advantages.",
+      "files": [
+        {
+          "path": "feature-section.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "pricing-section",
+      "type": "registry:block",
+      "title": "Pricing Section",
+      "description": "Clean, comparison pricing table emphasizing open source and community backing.",
+      "files": [
+        {
+          "path": "pricing-section.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "testimonial-section",
+      "type": "registry:block",
+      "title": "Testimonial Section",
+      "description": "Customer and community testimonials arranged in responsive quote cards.",
+      "files": [
+        {
+          "path": "testimonial-section.tsx",
+          "type": "registry:block"
+        }
+      ]
+    }
+  ]
+}

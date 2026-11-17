@@ -1,0 +1,73 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "vengence",
+  "homepage": "https://vengence-rho.vercel.app",
+  "items": [
+    {
+      "name": "aurora-background",
+      "type": "registry:ui",
+      "title": "Aurora Background",
+      "description": "An ethereal flowing aurora borealis animated background effect.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "aurora-background.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "grid-background",
+      "type": "registry:ui",
+      "title": "Grid Background",
+      "description": "A clean geometric grid background with optional radial mask falloff.",
+      "files": [
+        {
+          "path": "grid-background.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dot-background",
+      "type": "registry:ui",
+      "title": "Dot Background",
+      "description": "A refined dot matrix background pattern with subtle radial vignette.",
+      "files": [
+        {
+          "path": "dot-background.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spotlight-background",
+      "type": "registry:ui",
+      "title": "Spotlight Background",
+      "description": "A theatrical overhead spotlight gradient background for hero stages.",
+      "files": [
+        {
+          "path": "spotlight-background.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "gradient-mesh",
+      "type": "registry:ui",
+      "title": "Gradient Mesh",
+      "description": "A fluid multi-point ambient gradient mesh with floating blurred color nodes.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "gradient-mesh.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "vengence",
+  "homepage": "https://vengence-rho.vercel.app",
+  "items": [
+    {
+      "name": "text-reveal",
+      "type": "registry:ui",
+      "title": "Text Reveal",
+      "description": "Smooth cascading word-by-word text animation with spring easing.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "text-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "typewriter-text",
+      "type": "registry:ui",
+      "title": "Typewriter Text",
+      "description": "Retro-modern terminal typewriter effect with pulsing cursor and multi-phrase cycling.",
+      "files": [
+        {
+          "path": "typewriter-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "gradient-text",
+      "type": "registry:ui",
+      "title": "Gradient Text",
+      "description": "Animated shimmering multi-color gradient text typography.",
+      "files": [
+        {
+          "path": "gradient-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "flip-words",
+      "type": "registry:ui",
+      "title": "Flip Words",
+      "description": "Dynamic words flipping sequence with 3D stagger and optical blur.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "flip-words.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "blur-reveal",
+      "type": "registry:ui",
+      "title": "Blur Reveal",
+      "description": "Cinematic text entrance that resolves from defocus blur to sharp focus.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "blur-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

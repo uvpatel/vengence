@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dot-background",
+  "title": "Dot Background",
+  "description": "A refined dot matrix background pattern with subtle radial vignette.",
+  "files": [
+    {
+      "path": "registry/default/backgrounds/dot-background.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport React from \"react\";\n\nexport interface DotBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {\n  children?: React.ReactNode;\n  dotSize?: number;\n  spacing?: number;\n  mask?: \"radial\" | \"none\";\n}\n\nexport function DotBackground({\n  children,\n  className,\n  dotSize = 1.5,\n  spacing = 24,\n  mask = \"radial\",\n  ...props\n}: DotBackgroundProps) {\n  return (\n    <div\n      className={cn(\n        \"relative flex h-full w-full items-center justify-center bg-white dark:bg-neutral-950 overflow-hidden\",\n        className\n      )}\n      {...props}\n    >\n      <div\n        className={cn(\n          \"pointer-events-none absolute inset-0\",\n          mask === \"radial\" &&\n            \"[mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]\"\n        )}\n        style={{\n          backgroundImage: `radial-gradient(#d1d5db ${dotSize}px, transparent ${dotSize}px)`,\n          backgroundSize: `${spacing}px ${spacing}px`,\n        }}\n      />\n      <div className=\"relative z-10 w-full\">{children}</div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

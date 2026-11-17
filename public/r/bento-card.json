@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bento-card",
+  "title": "Bento Card",
+  "description": "A versatile bento card component designed for high-density modern grids.",
+  "files": [
+    {
+      "path": "registry/default/ui/bento-card.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface BentoCardProps extends React.HTMLAttributes<HTMLDivElement> {\n  name?: string;\n  className?: string;\n  background?: React.ReactNode;\n  Icon?: React.ElementType;\n  description?: string;\n  href?: string;\n  cta?: string;\n}\n\nexport function BentoCard({\n  name,\n  className,\n  background,\n  Icon,\n  description,\n  href,\n  cta = \"Learn more\",\n  children,\n  ...props\n}: BentoCardProps) {\n  return (\n    <div\n      className={cn(\n        \"group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 transition-all duration-300 hover:shadow-xl dark:border-neutral-800 dark:bg-neutral-950\",\n        className\n      )}\n      {...props}\n    >\n      <div className=\"absolute inset-0 z-0 overflow-hidden opacity-80 transition-opacity duration-300 group-hover:opacity-100\">\n        {background}\n      </div>\n\n      <div className=\"relative z-10 flex flex-col gap-2\">\n        {Icon && (\n          <div className=\"flex h-10 w-10 items-center justify-center rounded-xl border border-neutral-200 bg-neutral-100/80 text-neutral-900 shadow-sm transition-transform duration-300 group-hover:scale-110 dark:border-neutral-800 dark:bg-neutral-900/80 dark:text-neutral-100\">\n            <Icon className=\"h-5 w-5\" />\n          </div>\n        )}\n        {name && (\n          <h3 className=\"text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100\">\n            {name}\n          </h3>\n        )}\n        {description && (\n          <p className=\"max-w-lg text-sm text-neutral-600 dark:text-neutral-400\">\n            {description}\n          </p>\n        )}\n        {children}\n      </div>\n\n      {cta && (\n        <div className=\"relative z-10 mt-4 flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-neutral-500 transition-colors group-hover:text-neutral-900 dark:text-neutral-400 dark:group-hover:text-white\">\n          {href ? (\n            <a href={href} className=\"inline-flex items-center gap-1\">\n              <span>{cta}</span>\n              <span className=\"transition-transform duration-200 group-hover:translate-x-1\">→</span>\n            </a>\n          ) : (\n            <>\n              <span>{cta}</span>\n              <span className=\"transition-transform duration-200 group-hover:translate-x-1\">→</span>\n            </>\n          )}\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

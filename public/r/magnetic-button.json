@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magnetic-button",
+  "title": "Magnetic Button",
+  "description": "A magnetic cursor attraction button powered by spring physics.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/animated/magnetic-button.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion, useReducedMotion, type HTMLMotionProps } from \"motion/react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface MagneticButtonProps\n  extends Omit<HTMLMotionProps<\"button\">, \"ref\" | \"children\"> {\n  children?: React.ReactNode;\n  strength?: number;\n}\n\nexport function MagneticButton({\n  children,\n  className,\n  strength = 30,\n  disabled,\n  ...props\n}: MagneticButtonProps) {\n  const ref = React.useRef<HTMLButtonElement>(null);\n  const [position, setPosition] = React.useState({ x: 0, y: 0 });\n  const prefersReducedMotion = useReducedMotion();\n\n  function handleMouseMove(e: React.MouseEvent<HTMLButtonElement>) {\n    if (prefersReducedMotion || disabled || !ref.current) return;\n    const { clientX, clientY } = e;\n    const { height, width, left, top } = ref.current.getBoundingClientRect();\n    const middleX = clientX - (left + width / 2);\n    const middleY = clientY - (top + height / 2);\n    setPosition({\n      x: (middleX / width) * strength,\n      y: (middleY / height) * strength,\n    });\n  }\n\n  function handleMouseLeave() {\n    setPosition({ x: 0, y: 0 });\n  }\n\n  return (\n    <motion.button\n      ref={ref}\n      animate={{ x: position.x, y: position.y }}\n      transition={{ type: \"spring\", stiffness: 200, damping: 15, mass: 0.1 }}\n      onMouseMove={handleMouseMove}\n      onMouseLeave={handleMouseLeave}\n      disabled={disabled}\n      className={cn(\n        \"inline-flex items-center justify-center rounded-xl bg-neutral-900 px-6 py-3 text-sm font-medium text-white shadow-md transition-colors hover:bg-neutral-800 disabled:opacity-50 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200\",\n        className\n      )}\n      {...props}\n    >\n      {children}\n    </motion.button>\n  );\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

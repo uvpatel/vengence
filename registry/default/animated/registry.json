@@ -1,0 +1,82 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "vengence",
+  "homepage": "https://vengence-rho.vercel.app",
+  "items": [
+    {
+      "name": "magnetic-button",
+      "type": "registry:ui",
+      "title": "Magnetic Button",
+      "description": "A magnetic cursor attraction button powered by spring physics.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "magnetic-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "border-beam",
+      "type": "registry:ui",
+      "title": "Border Beam",
+      "description": "An animated gradient beam that seamlessly travels around the border of any card or container.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "border-beam.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card-3d",
+      "type": "registry:ui",
+      "title": "3D Card",
+      "description": "A 3D perspective tilt card that responds smoothly to mouse hover movements.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "card-3d.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "expandable-card",
+      "type": "registry:ui",
+      "title": "Expandable Card",
+      "description": "An interactive card that smoothly expands into an informative modal using shared layout animations.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "expandable-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "floating-dock",
+      "type": "registry:ui",
+      "title": "Floating Dock",
+      "description": "A floating macOS-inspired navigation dock with fluid icon magnification on hover.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "floating-dock.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

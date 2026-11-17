@@ -1,0 +1,79 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "vengence",
+  "homepage": "https://vengence-rho.vercel.app",
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Displays a button or a component that looks like a button with multiple variants and sizes.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "animated-button",
+      "type": "registry:ui",
+      "title": "Animated Button",
+      "description": "An interactive button with shimmer animation and micro-spring hover interactions.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "animated-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "gradient-button",
+      "type": "registry:ui",
+      "title": "Gradient Button",
+      "description": "An eye-catching button featuring dynamic glowing gradient borders.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "gradient-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spotlight-card",
+      "type": "registry:ui",
+      "title": "Spotlight Card",
+      "description": "A card with an interactive mouse spotlight effect that tracks cursor position.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "spotlight-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "bento-card",
+      "type": "registry:ui",
+      "title": "Bento Card",
+      "description": "A versatile bento card component designed for high-density modern grids.",
+      "files": [
+        {
+          "path": "bento-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

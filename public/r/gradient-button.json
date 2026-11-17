@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-button",
+  "title": "Gradient Button",
+  "description": "An eye-catching button featuring dynamic glowing gradient borders.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/ui/gradient-button.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion, useReducedMotion, type HTMLMotionProps } from \"motion/react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface GradientButtonProps\n  extends Omit<HTMLMotionProps<\"button\">, \"ref\" | \"children\"> {\n  children?: React.ReactNode;\n  gradient?: string;\n  variant?: \"solid\" | \"bordered\";\n}\n\nexport function GradientButton({\n  children,\n  className,\n  gradient = \"from-indigo-500 via-purple-500 to-pink-500\",\n  variant = \"bordered\",\n  disabled,\n  ...props\n}: GradientButtonProps) {\n  const prefersReducedMotion = useReducedMotion();\n\n  if (variant === \"solid\") {\n    return (\n      <motion.button\n        whileHover={prefersReducedMotion || disabled ? {} : { scale: 1.02 }}\n        whileTap={prefersReducedMotion || disabled ? {} : { scale: 0.98 }}\n        disabled={disabled}\n        className={cn(\n          \"relative inline-flex items-center justify-center rounded-xl bg-gradient-to-r px-6 py-2.5 text-sm font-medium text-white shadow-lg transition-all disabled:opacity-50 active:scale-95\",\n          gradient,\n          className\n        )}\n        {...props}\n      >\n        <span className=\"relative z-10 flex items-center gap-2\">{children}</span>\n      </motion.button>\n    );\n  }\n\n  return (\n    <motion.button\n      whileHover={prefersReducedMotion || disabled ? {} : { scale: 1.02 }}\n      whileTap={prefersReducedMotion || disabled ? {} : { scale: 0.98 }}\n      disabled={disabled}\n      className={cn(\n        \"group relative inline-flex items-center justify-center overflow-hidden rounded-xl p-[1px] font-medium transition-all disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    >\n      <span\n        className={cn(\n          \"absolute inset-0 bg-gradient-to-r transition-all duration-300 group-hover:opacity-100 opacity-70 blur-[1px]\",\n          gradient\n        )}\n      />\n      <span className=\"relative flex items-center gap-2 rounded-[11px] bg-neutral-950 px-5 py-2.5 text-sm text-neutral-100 transition-colors duration-200 group-hover:bg-neutral-900 dark:bg-neutral-900 dark:group-hover:bg-neutral-800\">\n        {children}\n      </span>\n    </motion.button>\n  );\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

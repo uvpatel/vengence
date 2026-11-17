@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-mesh",
+  "title": "Gradient Mesh",
+  "description": "A fluid multi-point ambient gradient mesh with floating blurred color nodes.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/backgrounds/gradient-mesh.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { motion, useReducedMotion } from \"motion/react\";\n\nexport interface GradientMeshProps extends React.HTMLAttributes<HTMLDivElement> {\n  children?: React.ReactNode;\n}\n\nexport function GradientMesh({\n  children,\n  className,\n  ...props\n}: GradientMeshProps) {\n  const prefersReducedMotion = useReducedMotion();\n\n  return (\n    <div\n      className={cn(\n        \"relative flex h-full w-full items-center justify-center overflow-hidden bg-neutral-950 text-white\",\n        className\n      )}\n      {...props}\n    >\n      <div className=\"absolute inset-0 overflow-hidden pointer-events-none opacity-50\">\n        <motion.div\n          animate={\n            prefersReducedMotion\n              ? {}\n              : {\n                  x: [0, 50, -30, 0],\n                  y: [0, -40, 20, 0],\n                  scale: [1, 1.1, 0.95, 1],\n                }\n          }\n          transition={{\n            duration: 18,\n            repeat: Infinity,\n            ease: \"easeInOut\",\n          }}\n          className=\"absolute -top-[20%] -left-[10%] h-[450px] w-[450px] rounded-full bg-purple-600/30 blur-[100px]\"\n        />\n        <motion.div\n          animate={\n            prefersReducedMotion\n              ? {}\n              : {\n                  x: [0, -60, 40, 0],\n                  y: [0, 30, -50, 0],\n                  scale: [1, 1.05, 1.15, 1],\n                }\n          }\n          transition={{\n            duration: 22,\n            repeat: Infinity,\n            ease: \"easeInOut\",\n          }}\n          className=\"absolute top-[20%] -right-[10%] h-[400px] w-[400px] rounded-full bg-blue-600/30 blur-[100px]\"\n        />\n        <motion.div\n          animate={\n            prefersReducedMotion\n              ? {}\n              : {\n                  x: [0, 40, -40, 0],\n                  y: [0, 50, -30, 0],\n                  scale: [1, 0.9, 1.1, 1],\n                }\n          }\n          transition={{\n            duration: 25,\n            repeat: Infinity,\n            ease: \"easeInOut\",\n          }}\n          className=\"absolute -bottom-[20%] left-[20%] h-[500px] w-[500px] rounded-full bg-pink-600/20 blur-[120px]\"\n        />\n      </div>\n\n      <div className=\"relative z-10 w-full\">{children}</div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spotlight-background",
+  "title": "Spotlight Background",
+  "description": "A theatrical overhead spotlight gradient background for hero stages.",
+  "files": [
+    {
+      "path": "registry/default/backgrounds/spotlight-background.tsx",
+      "content": "import React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface SpotlightBackgroundProps\n  extends React.HTMLAttributes<HTMLDivElement> {\n  children?: React.ReactNode;\n  spotlightColor?: string;\n  intensity?: number;\n}\n\nexport function SpotlightBackground({\n  children,\n  className,\n  spotlightColor = \"rgba(120, 119, 198, 0.25)\",\n  intensity = 1,\n  ...props\n}: SpotlightBackgroundProps) {\n  return (\n    <div\n      className={cn(\n        \"relative flex h-full w-full items-center justify-center overflow-hidden bg-neutral-950 text-white\",\n        className\n      )}\n      {...props}\n    >\n      <div\n        className=\"pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-[100%] blur-[120px]\"\n        style={{\n          background: spotlightColor,\n          opacity: intensity,\n        }}\n      />\n      <div className=\"pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,transparent_0%,rgba(10,10,10,0.8)_80%)]\" />\n      <div className=\"relative z-10 w-full\">{children}</div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

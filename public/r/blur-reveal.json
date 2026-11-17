@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blur-reveal",
+  "title": "Blur Reveal",
+  "description": "Cinematic text entrance that resolves from defocus blur to sharp focus.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/text/blur-reveal.tsx",
+      "content": "\"use client\";\n\nimport { motion, useReducedMotion } from \"motion/react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface BlurRevealProps {\n  children: React.ReactNode;\n  className?: string;\n  delay?: number;\n  duration?: number;\n  blur?: string;\n  yOffset?: number;\n}\n\nexport function BlurReveal({\n  children,\n  className,\n  delay = 0,\n  duration = 0.6,\n  blur = \"12px\",\n  yOffset = 16,\n}: BlurRevealProps) {\n  const prefersReducedMotion = useReducedMotion();\n\n  if (prefersReducedMotion) {\n    return <div className={cn(className)}>{children}</div>;\n  }\n\n  return (\n    <motion.div\n      initial={{\n        opacity: 0,\n        filter: `blur(${blur})`,\n        y: yOffset,\n      }}\n      animate={{\n        opacity: 1,\n        filter: \"blur(0px)\",\n        y: 0,\n      }}\n      transition={{\n        duration,\n        delay,\n        ease: [0.25, 0.4, 0.25, 1],\n      }}\n      className={cn(className)}\n    >\n      {children}\n    </motion.div>\n  );\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

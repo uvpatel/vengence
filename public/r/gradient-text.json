@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-text",
+  "title": "Gradient Text",
+  "description": "Animated shimmering multi-color gradient text typography.",
+  "files": [
+    {
+      "path": "registry/default/text/gradient-text.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport React from \"react\";\n\nexport interface GradientTextProps extends React.HTMLAttributes<HTMLSpanElement> {\n  children: React.ReactNode;\n  gradient?: string;\n  animate?: boolean;\n}\n\nexport function GradientText({\n  children,\n  className,\n  gradient = \"from-indigo-500 via-purple-500 to-pink-500\",\n  animate = true,\n  ...props\n}: GradientTextProps) {\n  return (\n    <span\n      className={cn(\n        \"inline-block bg-gradient-to-r bg-clip-text text-transparent font-bold\",\n        gradient,\n        animate && \"bg-[length:200%_auto] animate-[gradient-shift_4s_ease_infinite]\",\n        className\n      )}\n      {...props}\n    >\n      {children}\n    </span>\n  );\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
