@@ -5,7 +5,7 @@ import {
   getItemBySlug,
 } from "@/lib/registry";
 import { getFileSource } from "@/lib/source-loader";
-import { DocsSidebar } from "@/components/layout/docs-sidebar";
+import { DocsContentLayout } from "@/components/docs/docs-content-layout";
 import { ComponentPreviewBox } from "@/components/docs/component-preview-box";
 import { CliInstallBox } from "@/components/docs/cli-install-box";
 import { PropsTable } from "@/components/docs/props-table";
@@ -40,12 +40,8 @@ export default async function ComponentDetailPage({
       : null;
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex-1 flex">
-      {/* Sidebar */}
-      <DocsSidebar />
-
-      {/* Main Content Area */}
-      <main className="flex-1 py-8 md:pl-8 max-w-4xl min-w-0">
+    <DocsContentLayout>
+      <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-10">
         {/* Breadcrumbs */}
         <div className="flex items-center gap-2 text-xs text-neutral-500 mb-6">
           <Link href="/components" className="hover:text-black dark:hover:text-white">
@@ -170,6 +166,6 @@ export default async function ComponentDetailPage({
           )}
         </div>
       </main>
-    </div>
+    </DocsContentLayout>
   );
 }

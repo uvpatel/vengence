@@ -3,7 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { IconBrandGithub, IconMenu2, IconX, IconSparkles } from "@tabler/icons-react";
+import {
+  IconBrandGithub,
+  IconMenu2,
+  IconX,
+  IconSparkles,
+} from "@tabler/icons-react";
 import { ThemeToggle } from "./theme-toggle";
 
 const NAV_LINKS = [
@@ -18,90 +23,117 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-neutral-200/80 dark:border-neutral-800/80 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/90 backdrop-blur-md transition-colors">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight text-neutral-900 dark:text-white">
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-sm">
-              <IconSparkles className="h-4 w-4" />
-            </span>
-            <span className="font-bold tracking-tight text-base">
-              Vengence <span className="text-neutral-400 font-normal text-xs uppercase px-1.5 py-0.5 ml-1 rounded border border-neutral-200 dark:border-neutral-800">UI</span>
-            </span>
+        {/* Brand Logo & Main Nav */}
+        <div className="flex items-center gap-8">
+          <Link
+            href="/"
+            className="group flex items-center gap-2.5 transition-opacity hover:opacity-90"
+          >
+            <div className="relative flex h-8 w-8 items-center justify-center rounded-[8px] border border-border bg-surface text-foreground shadow-xs transition-transform duration-200 group-hover:scale-105">
+              <IconSparkles className="h-4 w-4 text-[#62AEF0]" />
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="font-bold tracking-tight text-foreground text-sm sm:text-base">
+                Vengence
+              </span>
+              <span className="rounded-[4px] border border-[#0075DE]/40 bg-[#0075DE]/10 px-1.5 py-0.5 text-[10px] font-mono font-medium text-[#62AEF0]">
+                UI
+              </span>
+            </div>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-1 text-sm font-medium">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex items-center gap-1 text-sm">
             {NAV_LINKS.map((link) => {
-              const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+              const isActive =
+                pathname === link.href ||
+                (link.href !== "/" && pathname.startsWith(link.href));
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`rounded-md px-3 py-1.5 text-sm transition-colors ${
+                  className={`relative rounded-[8px] px-3 py-1.5 text-xs font-medium transition-all ${
                     isActive
-                      ? "text-neutral-900 dark:text-white font-medium bg-neutral-100 dark:bg-neutral-900"
-                      : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100"
+                      ? "text-foreground bg-surface-elevated font-semibold shadow-xs"
+                      : "text-muted-foreground hover:text-foreground hover:bg-surface/80"
                   }`}
                 >
                   {link.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-3 right-3 h-[2px] rounded-full bg-[#0075DE]" />
+                  )}
                 </Link>
               );
             })}
           </nav>
         </div>
 
-        <div className="flex items-center gap-2">
+        {/* Right Action Icons & Theme Toggle */}
+        <div className="flex items-center gap-2.5">
           <Link
             href="https://github.com/urvilpatel/vengence-ui"
             target="_blank"
             rel="noreferrer"
-            className="hidden sm:flex h-9 w-9 items-center justify-center rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-100/60 dark:bg-neutral-900/60 text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-colors"
+            className="hidden sm:inline-flex items-center gap-1.5 rounded-[8px] border border-border bg-surface px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-[#0075DE]/50 hover:text-foreground hover:bg-surface-elevated"
             aria-label="GitHub Repository"
           >
             <IconBrandGithub className="h-4 w-4" />
+            <span className="font-mono text-[11px]">GitHub</span>
           </Link>
 
           <ThemeToggle />
 
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden flex h-9 w-9 items-center justify-center rounded-lg border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300"
+            className="md:hidden flex h-8 w-8 items-center justify-center rounded-[8px] border border-border bg-surface text-muted-foreground transition-colors hover:text-foreground"
             aria-label="Toggle Menu"
           >
-            {mobileOpen ? <IconX className="h-5 w-5" /> : <IconMenu2 className="h-5 w-5" />}
+            {mobileOpen ? (
+              <IconX className="h-4 w-4" />
+            ) : (
+              <IconMenu2 className="h-4 w-4" />
+            )}
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="md:hidden border-b border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 px-4 py-4 space-y-2">
+        <div className="md:hidden border-b border-border bg-surface px-4 py-4 space-y-1 animate-in fade-in slide-in-from-top-2 duration-150">
           {NAV_LINKS.map((link) => {
-            const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+            const isActive =
+              pathname === link.href ||
+              (link.href !== "/" && pathname.startsWith(link.href));
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className={`block rounded-lg px-3 py-2 text-base font-medium ${
+                className={`flex items-center justify-between rounded-[8px] px-3 py-2 text-sm font-medium transition-colors ${
                   isActive
-                    ? "bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-white"
-                    : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                    ? "bg-surface-elevated text-foreground font-semibold"
+                    : "text-muted-foreground hover:bg-surface-elevated hover:text-foreground"
                 }`}
               >
-                {link.label}
+                <span>{link.label}</span>
+                {isActive && (
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#0075DE]" />
+                )}
               </Link>
             );
           })}
-          <div className="pt-2 border-t border-neutral-200 dark:border-neutral-800">
+          <div className="pt-2 mt-2 border-t border-border flex items-center justify-between px-3 py-2 text-xs text-muted-foreground">
             <Link
               href="https://github.com/urvilpatel/vengence-ui"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 px-3 py-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+              className="flex items-center gap-2 hover:text-foreground"
             >
               <IconBrandGithub className="h-4 w-4" />
-              <span>GitHub</span>
+              <span>GitHub Repository</span>
             </Link>
           </div>
         </div>

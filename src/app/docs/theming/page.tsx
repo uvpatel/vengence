@@ -1,12 +1,10 @@
-import { DocsSidebar } from "@/components/layout/docs-sidebar";
+import { DocsContentLayout } from "@/components/docs/docs-content-layout";
 import { CodeBlock } from "@/components/docs/code-block";
 
 export default function ThemingDocsPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex-1 flex">
-      <DocsSidebar />
-
-      <main className="flex-1 py-8 md:pl-8 max-w-4xl min-w-0">
+    <DocsContentLayout>
+      <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-10">
         <div className="border-b border-neutral-200 dark:border-neutral-800 pb-6 mb-8">
           <span className="text-xs font-bold uppercase tracking-wider text-indigo-500">
             Styling
@@ -52,6 +50,6 @@ export default function ThemingDocsPage() {
           </section>
         </div>
       </main>
-    </div>
+    </DocsContentLayout>
   );
 }
