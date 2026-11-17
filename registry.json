@@ -1,0 +1,13 @@
+
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "your-ui",
+  "homepage": "https://your-ui.vercel.app",
+  "include": [
+    "registry/default/ui/registry.json",
+    "registry/default/animated/registry.json",
+    "registry/default/backgrounds/registry.json",
+    "registry/default/text/registry.json",
+    "registry/default/blocks/registry.json"
+  ]
+}
